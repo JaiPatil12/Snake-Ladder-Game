@@ -278,9 +278,10 @@
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const numPlayers = parseInt(urlParams.get('players')) || 2;
-        const isBotPlaying = urlParams.get('bot') === 'true';
+        // Read the selected game mode and player count from the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const numPlayers = parseInt(urlParams.get('players')) || 2;
+const isBotPlaying = urlParams.get('bot') === 'true';
 
         const boardElement = document.getElementById('board');
         const statusElement = document.getElementById('status');
@@ -355,7 +356,8 @@
         function rollDice() {
             if (isAnimating || gameOver) return;
 
-            const diceValue = Math.floor(Math.random() * 6) + 1;
+           // Generate a random dice value between 1 and 6
+const diceValue = Math.floor(Math.random() * 6) + 1;
             diceElement.innerText = diceValue;
 
             diceElement.style.transform = 'scale(1.3)';
