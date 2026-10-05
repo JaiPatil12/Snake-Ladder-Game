@@ -1,6 +1,6 @@
 # 🐍 Snake & Ladder Game
 
-A responsive and interactive **Snake & Ladder web game** developed using **Python Flask, HTML, CSS, and JavaScript**.
+A responsive and interactive **Snake & Ladder web game** developed using **Python Flask, HTML, CSS, and JavaScript** featuring multiple game modes and an interactive 10×10 board.
 
 The project provides a game menu where users can select between different game modes and then play Snake & Ladder on a dynamically generated 10×10 board.
 
