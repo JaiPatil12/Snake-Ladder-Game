@@ -220,7 +220,6 @@
         isolation: isolate;
       }
 
-      /* Animated glowing border */
       .team-card::before {
         content: "";
         position: absolute;
@@ -411,7 +410,6 @@
         color: 1px rgba(255, 255, 255, 0.22);
       }
 
-      /* Responsive team layout */
       @media (max-width: 600px) {
         .members {
           grid-template-columns: repeat(2, 1fr);
@@ -502,7 +500,6 @@
           transition: none;
         }
       }
-      /* PROFILE POPUP OVERLAY */
 
       .profile-overlay {
         position: fixed;
@@ -527,14 +524,10 @@
         transition: opacity 0.25s ease, visibility 0.25s ease;
       }
 
-      /* Popup becomes visible */
-
       .profile-overlay.show {
         opacity: 1;
         visibility: visible;
       }
-
-      /* PROFILE CARD */
 
       .profile-popup {
         position: relative;
@@ -561,13 +554,9 @@
         animation: none;
       }
 
-      /* Popup entrance */
-
       .profile-overlay.show .profile-popup {
         transform: translateY(0) scale(1);
       }
-
-      /* CLOSE BUTTON */
 
       .profile-close {
         position: absolute;
@@ -605,10 +594,6 @@
 
         color: #fff;
       }
-
-      /*
-   PROFILE AVATAR
-   */
 
       .profile-avatar {
         width: clamp(70px, 18vw, 90px);
@@ -653,10 +638,6 @@
         }
       }
 
-      /*
-   PROFILE NAME
-   */
-
       .profile-popup h2 {
         margin: 0;
 
@@ -668,10 +649,6 @@
 
         color: var(--ink);
       }
-
-      /*
-   PROFILE ROLE
-   */
 
       .profile-role {
         margin: 4px 0 20px;
@@ -685,10 +662,6 @@
         font-size: 0.9rem;
       }
 
-      /*
-   PROFILE DETAILS
-   */
-
       .profile-details {
         display: flex;
 
@@ -696,8 +669,6 @@
 
         gap: 9px;
       }
-
-      /* Individual detail */
 
       .profile-detail {
         display: flex;
@@ -731,8 +702,6 @@
         );
       }
 
-      /* Detail icon */
-
       .detail-icon {
         flex: 0 0 38px;
 
@@ -749,8 +718,6 @@
         font-size: 1.05rem;
       }
 
-      /* Detail text container */
-
       .profile-detail > div {
         min-width: 0;
 
@@ -758,8 +725,6 @@
 
         flex-direction: column;
       }
-
-      /* Label */
 
       .detail-label {
         font-size: 0.68rem;
@@ -773,8 +738,6 @@
         color: var(--muted);
       }
 
-      /* Actual value */
-
       .detail-value {
         margin-top: 1px;
 
@@ -786,10 +749,6 @@
 
         overflow-wrap: anywhere;
       }
-
-      /*
-   MOBILE POPUP
-   */
 
       @media (max-width: 400px) {
         .profile-overlay {
@@ -814,10 +773,6 @@
         }
       }
 
-      /*
-   REDUCED MOTION
-   */
-
       @media (prefers-reduced-motion: reduce) {
         .profile-overlay,
         .profile-popup,
@@ -833,7 +788,6 @@
     </style>
   </head>
   <body>
-    <!-- PROFILE POPUP -->
 
     <div
       class="profile-overlay"
@@ -909,14 +863,316 @@
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+    <main class="wrap">
+      <header class="logo">
+        <span class="emoji" aria-hidden="true">🐍🎲🪜</span>
+        <h1>Snake &amp; Ladder</h1>
+      </header>
 
-  <script>
-    // Redirect to the game page with the selected number of players and bot mode
-function selectMode(players, isBot) {
-    window.location.href = `index.html?players=${players}&bot=${isBot}`;
-}
-  </script>
-</body>
+      <section class="team-card" aria-labelledby="team-title">
+        <div class="team-heading">
+          <span class="team-icon" aria-hidden="true">👨‍💻</span>
+          <h2 id="team-title">Meet the Team</h2>
+          <p>The minds behind the game</p>
+        </div>
+
+        <div class="members">
+          <div
+            class="member"
+            onclick="showProfile('jai')"
+            tabindex="0"
+            role="button"
+            onkeydown="handleMemberKey(event, 'jai')"
+          >
+            <span class="member-avatar">JP</span>
+            <span class="member-name">Jai Patil</span>
+            <span class="member-role">Developer</span>
+          </div>
+
+          <div
+            class="member"
+            onclick="showProfile('yash')"
+            tabindex="0"
+            role="button"
+            onkeydown="handleMemberKey(event, 'yash')"
+          >
+            <span class="member-avatar">YT</span>
+            <span class="member-name">Yash Tripathi</span>
+            <span class="member-role">Developer</span>
+          </div>
+
+          <div
+            class="member"
+            onclick="showProfile('harsh')"
+            tabindex="0"
+            role="button"
+            onkeydown="handleMemberKey(event, 'harsh')"
+          >
+            <span class="member-avatar">HS</span>
+            <span class="member-name">Harsh Sanap</span>
+            <span class="member-role">Developer</span>
+          </div>
+
+          <div
+            class="member"
+            onclick="showProfile('yashSatpute')"
+            tabindex="0"
+            role="button"
+            onkeydown="handleMemberKey(event, 'yashSatpute')"
+          >
+            <span class="member-avatar">YS</span>
+            <span class="member-name">Yash Satpute</span>
+            <span class="member-role">Developer</span>
+          </div>
+        </div>
+        <p class="foot">⇓ Scroll down to start the game ⇓</p>
+      </section>
+
+      <section class="card" aria-labelledby="mode-title">
+        <h2 id="mode-title">Select Game Mode</h2>
+        <p>Pick how you want to play.</p>
+
+        <div class="modes">
+          <button class="mode bot" type="button" onclick="selectMode(2, true)">
+            <span class="ico" aria-hidden="true">🤖</span>
+            <span class="txt"
+              ><span class="title">1 Player vs Bot</span
+              ><span class="sub">Play solo against the computer</span></span
+            >
+          </button>
+
+          <button class="mode p2" type="button" onclick="selectMode(2, false)">
+            <span class="ico" aria-hidden="true">👥</span>
+            <span class="txt"
+              ><span class="title">2 Players</span
+              ><span class="sub">Head to head</span></span
+            >
+          </button>
+
+          <button class="mode p3" type="button" onclick="selectMode(3, false)">
+            <span class="ico" aria-hidden="true">🧑‍🤝‍🧑</span>
+            <span class="txt"
+              ><span class="title">3 Players</span
+              ><span class="sub">Three-way race</span></span
+            >
+          </button>
+
+          <button
+            class="mode p4"
+            type="button"
+            onclick="selectMode(4, false)"
+            style="grid-column: 1 / -1"
+          >
+            <span class="ico" aria-hidden="true">🎉</span>
+            <span class="txt"
+              ><span class="title">4 Players</span
+              ><span class="sub">Full house</span></span
+            >
+          </button>
+        </div>
+      </section>
+
+      <div
+        class="profile-overlay"
+        id="profileOverlay"
+        onclick="closeProfile(event)"
+        aria-hidden="true"
+      >
+        <div
+          class="profile-popup"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="profileName"
+          onclick="event.stopPropagation()"
+        >
+          <button
+            class="profile-close"
+            type="button"
+            onclick="hideProfile()"
+            aria-label="Close profile"
+          >
+            &times;
+          </button>
+
+          <div class="profile-avatar" id="profileAvatar">JP</div>
+
+          <h2 id="profileName">Jai Patil</h2>
+
+          <p class="profile-role" id="profileRole">Developer</p>
+
+          <div class="profile-details">
+            <div class="profile-detail">
+              <span class="detail-icon">🎓</span>
+              <div>
+                <span class="detail-label">Year</span>
+                <span class="detail-value" id="profileYear">4th Year</span>
+              </div>
+            </div>
+
+            <div class="profile-detail">
+              <span class="detail-icon">🆔</span>
+              <div>
+                <span class="detail-label">Roll No.</span>
+                <span class="detail-value" id="profileRoll">YOUR ROLL NO.</span>
+              </div>
+            </div>
+
+            <div class="profile-detail">
+              <span class="detail-icon">👥</span>
+              <div>
+                <span class="detail-label">Batch</span>
+                <span class="detail-value" id="profileBatch">TE IT - 2</span>
+              </div>
+            </div>
+
+            <div class="profile-detail">
+              <span class="detail-icon">💻</span>
+              <div>
+                <span class="detail-label">Branch</span>
+                <span class="detail-value" id="profileBranch">
+                  Information Technology
+                </span>
+              </div>
+            </div>
+
+            <div class="profile-detail">
+              <span class="detail-icon">📧</span>
+              <div>
+                <span class="detail-label">Email</span>
+                <span class="detail-value" id="profileEmail">
+                  email@example.com
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+
+      function selectMode(players, isBot) {
+        window.location.href = `index.html?players=${players}&bot=${isBot}`;
+      }
+
+      const members = {
+        jai: {
+          name: "Jai Patil",
+          initials: "JP",
+          role: "Developer",
+
+          year: "4th Year",
+          roll: "14",
+          batch: "BE IT - 2",
+          branch: "Information Technology",
+          email: "jaipatil-inft@atharvacoe.ac.in",
+        },
+
+        yash: {
+          name: "Yash Tripathi",
+          initials: "YT",
+          role: "Developer",
+
+          year: "4th Year",
+          roll: "52",
+          batch: "BE IT - 2",
+          branch: "Information Technology",
+          email: "yashtripathi-inft@atharvacoe.ac.in",
+        },
+
+        harsh: {
+          name: "Harsh Sanap",
+          initials: "HS",
+          role: "Developer",
+
+          year: "4th Year",
+          roll: "28",
+          batch: "BE IT - 2",
+          branch: "Information Technology",
+          email: "harshsanap-inft@atharvacoe.ac.in",
+        },
+
+        yashSatpute: {
+          name: "Yash Satpute",
+          initials: "YS",
+          role: "Developer",
+
+          year: "4th Year",
+          roll: "33",
+          batch: "BE IT - 2",
+          branch: "Information Technology",
+          email: "yashsatpute-inft@atharvacoe.ac.in",
+        },
+      };
+
+      function showProfile(memberId) {
+        const member = members[memberId];
+
+        if (!member) {
+          return;
+        }
+
+        document.getElementById("profileAvatar").textContent = member.initials;
+
+        document.getElementById("profileName").textContent = member.name;
+
+        document.getElementById("profileRole").textContent = member.role;
+
+        document.getElementById("profileYear").textContent = member.year;
+
+        document.getElementById("profileRoll").textContent = member.roll;
+
+        document.getElementById("profileBatch").textContent = member.batch;
+
+        document.getElementById("profileBranch").textContent = member.branch;
+
+        document.getElementById("profileEmail").textContent = member.email;
+
+        const overlay = document.getElementById("profileOverlay");
+
+        overlay.classList.add("show");
+
+        overlay.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        document.querySelector(".profile-close").focus();
+      }
+
+      function hideProfile() {
+        const overlay = document.getElementById("profileOverlay");
+
+        overlay.classList.remove("show");
+
+        overlay.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+      }
+
+      function closeProfile(event) {
+        if (event.target.id === "profileOverlay") {
+          hideProfile();
+        }
+      }
+
+      function handleMemberKey(event, memberId) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+
+          showProfile(memberId);
+        }
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          const overlay = document.getElementById("profileOverlay");
+
+          if (overlay.classList.contains("show")) {
+            hideProfile();
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
